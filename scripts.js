@@ -9,3 +9,11 @@ const [red, blue, yellow, green] = [...document.getElementsByClassName("box")];
     }, 300);
   });
 });
+
+const colors = ["red", "blue", "yellow", "green"];
+
+const sequence = Array.from({ length: 20 }, () => {
+  return colors[Math.floor(Math.random() * 4)];
+});
+
+console.log(sequence);
