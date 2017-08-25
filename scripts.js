@@ -1,16 +1,15 @@
 const colors = [...document.getElementsByClassName("box")];
 
-colors.forEach(button => {
+colors.forEach((button, i) => {
   button.addEventListener("click", () => {
     const color = button.style.backgroundColor;
+    state.userClicks.push(i);
     button.style.filter = "saturate(50%)";
     setTimeout(() => {
       button.style.filter = "saturate(100%)";
     }, 300);
   });
 });
-
-const colorStrings = ["red", "blue", "yellow", "green"];
 
 const sequence = Array.from({ length: 20 }, (v, k) => {
   return Math.floor(Math.random() * 4);
