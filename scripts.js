@@ -1,6 +1,6 @@
-const [red, blue, yellow, green] = [...document.getElementsByClassName("box")];
+const colors = [...document.getElementsByClassName("box")];
 
-[red, blue, yellow, green].forEach(button => {
+colors.forEach(button => {
   button.addEventListener("click", () => {
     const color = button.style.backgroundColor;
     button.style.filter = "saturate(50%)";
@@ -10,10 +10,23 @@ const [red, blue, yellow, green] = [...document.getElementsByClassName("box")];
   });
 });
 
-const colors = ["red", "blue", "yellow", "green"];
+const colorStrings = ["red", "blue", "yellow", "green"];
 
-const sequence = Array.from({ length: 20 }, () => {
-  return colors[Math.floor(Math.random() * 4)];
+const sequence = Array.from({ length: 20 }, (v, k) => {
+  return Math.floor(Math.random() * 4);
 });
 
-console.log(sequence);
+const start = document.getElementsByTagName("button")[0];
+
+const state = {
+  count: 0,
+  userClicks: []
+};
+
+start.addEventListener("click", () => {
+  state.count = 1;
+  colors[sequence[0]].style.filter = "saturate(50%)";
+  setTimeout(() => {
+    colors[sequence[0]].style.filter = "saturate(100%)";
+  }, 300);
+});
